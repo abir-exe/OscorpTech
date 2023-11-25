@@ -1,8 +1,8 @@
 const AboutUs = () => {
   return (
     <div>
-      <h2 className="text-5xl text-center mb-10 border-x-2 py-5">About Us</h2>
-      <div className="py-10 bg-base-200">
+      <h2 className="text-5xl text-center mb-10 border-x-2 py-5 font-bold uppercase">// About Us</h2>
+      <div className="py-10 bg-base-200 rounded-xl">
         <div className="hero-content flex-col lg:flex-row">
           <img
             src="https://i.ibb.co/ZXcQJs0/japan.jpg"
@@ -22,8 +22,8 @@ const AboutUs = () => {
             <button className="btn btn-outline">Read More...</button>
           </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 items-center bg-base-200 p-5 rounded-xl">
-          <div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-center bg-base-200 p-5 rounded-xl">
+          <div className="border-x-2">
             {/* chat bubbles  */}
             <div className="chat chat-start">
               <div className="chat-bubble">Who We Are?</div>
@@ -40,8 +40,8 @@ const AboutUs = () => {
               </div>
             </div>
           </div>
-          <div>
             {/* chat bubbles  */}
+          <div className="border-x-2">
 
             <div className="chat chat-start">
               <div className="chat-bubble">What Sets Us Apart?</div>
@@ -64,8 +64,8 @@ const AboutUs = () => {
               </div>
             </div>
           </div>
-          <div>
             {/* chat bubbles  */}
+          <div className="border-x-2">
 
             <div className="chat chat-start">
               <div className="chat-bubble">Our Vision...</div>

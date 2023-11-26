@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-comment-textnodes */
 const AboutUs = () => {
   return (
     <div>

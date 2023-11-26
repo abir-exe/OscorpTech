@@ -11,7 +11,7 @@ const Navbar = () => {
             <Link to="/joinAsEmployee">Join As Employee</Link>
           </li>
           <li>
-            <Link to="/">Join As Admin</Link>
+            <Link to="/joinAsAdmin">Join As Admin</Link>
           </li>
         </>
       );

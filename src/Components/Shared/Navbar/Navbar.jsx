@@ -15,6 +15,26 @@ const Navbar = () => {
           </li>
         </>
       );
+    const navDropOptions = (
+        <ul
+              tabIndex={0}
+              className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
+            >
+              <li>
+                <a className="justify-between">
+                  Profile
+                  <span className="badge">New</span>
+                </a>
+              </li>
+              <li>
+                <a>Settings</a>
+              </li>
+              <li>
+            <Link to="/login">Login</Link>
+          </li>
+            </ul>
+      );
+
 
   return (
     <div>
@@ -35,23 +55,7 @@ const Navbar = () => {
                 />
               </div>
             </label>
-            <ul
-              tabIndex={0}
-              className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
-            >
-              <li>
-                <a className="justify-between">
-                  Profile
-                  <span className="badge">New</span>
-                </a>
-              </li>
-              <li>
-                <a>Settings</a>
-              </li>
-              <li>
-                <a>Logout</a>
-              </li>
-            </ul>
+            {navDropOptions}
           </div>
         </div>
       </div>

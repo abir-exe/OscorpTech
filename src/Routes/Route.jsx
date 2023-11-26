@@ -4,6 +4,7 @@ import Home from "../Pages/Home/Home/Home";
 import Main from "../Layout/Main";
 import JoinAsEmployee from "../Pages/JoinAsEmployee/JoinAsEmployee";
 import JoinAsAdmin from "../Pages/JoinAsAdmin/JoinAsAdmin";
+import Login from "../Pages/Login/Login";
 
 const router = createBrowserRouter([
     {
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
         {
           path: '/joinAsAdmin',
           element: <JoinAsAdmin></JoinAsAdmin>
+        },
+        {
+          path: '/login',
+          element: <Login></Login>
         }
       ]
     },

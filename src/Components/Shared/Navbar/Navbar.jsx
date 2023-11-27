@@ -36,6 +36,15 @@ const Navbar = () => {
             <li>
             <Link to="/profile">Profile</Link>
           </li>
+            <li>
+            <Link to="/admin/assetList">Asset List</Link>
+          </li>
+            <li>
+            <Link to="/admin/addAnAsset">Add An Asset</Link>
+          </li>
+            <li>
+            <Link to="/admin/allRequests">All Requests</Link>
+          </li>
             </>
              : 
             <>

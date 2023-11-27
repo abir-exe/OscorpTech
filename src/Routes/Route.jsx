@@ -10,6 +10,9 @@ import MyTeam from "../Pages/UserAvailAblePages/MyTeam/MyTeam";
 import RequestForAnAsset from "../Pages/UserAvailAblePages/RequestForAnAsset/RequestForAnAsset";
 import MakeACustomRequest from "../Pages/UserAvailAblePages/MakeACustomRequest/MakeACustomRequest";
 import Profile from "../Pages/UserAvailAblePages/Profile/Profile";
+import AssetList from "../Pages/AdminAvailablePages/AssetList/AssetList";
+import AddAnAsset from "../Pages/AdminAvailablePages/AddAnAsset/AddAnAsset";
+import AllRequests from "../Pages/AdminAvailablePages/AllRequests/AllRequests";
 
 const router = createBrowserRouter([
     {
@@ -51,9 +54,23 @@ const router = createBrowserRouter([
         {
           path: '/profile',
           element: <Profile></Profile>
+        },
+        {
+          path: '/admin/assetList',
+          element: <AssetList></AssetList>
+        },
+        {
+          path: '/admin/addAnAsset',
+          element: <AddAnAsset></AddAnAsset>
+        },
+        {
+          path: '/admin/allRequests',
+          element: <AllRequests></AllRequests>
         }
+        
       ]
-    },
+    }
+    
   ]);
 
 export default router;

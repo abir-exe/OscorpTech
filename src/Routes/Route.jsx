@@ -5,6 +5,11 @@ import Main from "../Layout/Main";
 import JoinAsEmployee from "../Pages/JoinAsEmployee/JoinAsEmployee";
 import JoinAsAdmin from "../Pages/JoinAsAdmin/JoinAsAdmin";
 import Login from "../Pages/Login/Login";
+import MyAssets from "../Pages/UserAvailAblePages/MyAssets/MyAssets";
+import MyTeam from "../Pages/UserAvailAblePages/MyTeam/MyTeam";
+import RequestForAnAsset from "../Pages/UserAvailAblePages/RequestForAnAsset/RequestForAnAsset";
+import MakeACustomRequest from "../Pages/UserAvailAblePages/MakeACustomRequest/MakeACustomRequest";
+import Profile from "../Pages/UserAvailAblePages/Profile/Profile";
 
 const router = createBrowserRouter([
     {
@@ -26,6 +31,26 @@ const router = createBrowserRouter([
         {
           path: '/login',
           element: <Login></Login>
+        },
+        {
+          path: '/myAssets',
+          element: <MyAssets></MyAssets>
+        },
+        {
+          path: '/myTeam',
+          element: <MyTeam></MyTeam>
+        },
+        {
+          path: '/requestForAnAsset',
+          element: <RequestForAnAsset></RequestForAnAsset>
+        },
+        {
+          path: '/makeACustomRequest',
+          element: <MakeACustomRequest></MakeACustomRequest>
+        },
+        {
+          path: '/profile',
+          element: <Profile></Profile>
         }
       ]
     },

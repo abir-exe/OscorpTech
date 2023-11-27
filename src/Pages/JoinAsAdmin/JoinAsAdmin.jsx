@@ -1,9 +1,54 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth";
+import toast from "react-hot-toast";
 
 const JoinAsAdmin = () => {
-  const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const { createUser, updateUserProfile } = useAuth();
+
+  const navigate = useNavigate();
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    console.log(data)
+    createUser(data.email, data.password).then((result) => {
+      const loggedUser = result.user;
+      console.log(loggedUser);
+      updateUserProfile(data.name, data.companyLogo)
+      .then(() => {
+        //create user entry in database
+        // const userInfo = {
+        //   name: data.name,
+        //   email: data.email,
+        // };
+        // axiosPublic.post("/users", userInfo).then((res) => {
+        //   if (res.data.insertedId) {
+        //     console.log("user added to the database");
+            reset();
+            toast("Sign In As Admin Successful!", {
+              icon: "👏",
+            });
+            navigate("/");
+        //   }
+        // });
+      })
+      .catch((error) => {
+        console.log(error)
+        
+      });
+  });
+};
+
+
+
+
 
   return (
     <div>
@@ -23,6 +68,9 @@ const JoinAsAdmin = () => {
             placeholder="Full Name"
             className="input input-bordered w-full  "
           />
+          {errors.name?.type === "required" && (
+              <p className="text-red-600">Name is required</p>
+            )}
         </div>
          {/* email  */}
          <div className="form-control w-2/3 my-6">
@@ -35,6 +83,9 @@ const JoinAsAdmin = () => {
             placeholder="Email"
             className="input input-bordered w-full  "
           />
+          {errors.email?.type === "required" && (
+              <p className="text-red-600">Email is required</p>
+            )}
           </div>
            </div>
            <div className="flex gap-6">
@@ -49,17 +100,23 @@ const JoinAsAdmin = () => {
             placeholder="Company Name"
             className="input input-bordered w-full  "
           />
+          {errors.companyName?.type === "required" && (
+              <p className="text-red-600">Company Name is required</p>
+            )}
         </div>
          {/* company logo  */}
          <div className="form-control w-2/3 my-6">
             <label className="label">
-              <span className="label-text">Company Logo*</span>
+              <span className="label-text">Company Logo URL*</span>
             </label>
             <input
-              {...register("companyLogo")}
-              type="file"
-              className="file-input w-full max-w-xs"
+              {...register("companyLogo", { required: true })}
+              type="text"
+              className="input input-bordered w-full  "
             />
+            {errors.companyLogo?.type === "required" && (
+              <p className="text-red-600">Company Logo is required</p>
+            )}
           </div>
            </div>
         
@@ -76,6 +133,9 @@ const JoinAsAdmin = () => {
               placeholder="Password"
               className="input input-bordered w-full  "
             />
+            {errors.password?.type === "required" && (
+              <p className="text-red-600">Password is required</p>
+            )}
           </div>
           {/* date  */}
           <div className="form-control flex-1 my-6">
@@ -88,6 +148,9 @@ const JoinAsAdmin = () => {
               placeholder="Birth Date"
               className="input input-bordered w-full  "
             />
+            {errors.birthDate?.type === "required" && (
+              <p className="text-red-600">Birth Date is required</p>
+            )}
           </div>
         </div>
         {/* packages  */}
@@ -99,6 +162,7 @@ const JoinAsAdmin = () => {
                 defaultValue="default"
                 {...register("package", { required: true })}
                 className="select select-bordered w-full  "
+                required
               >
                 <option disabled value="default">
                   Select a Package
@@ -107,6 +171,9 @@ const JoinAsAdmin = () => {
                 <option value="packageTwo">10 Members for $8</option>
                 <option value="packageThree">20 Members for $15</option>
               </select>
+              {errors.package?.type === "required" && (
+              <p className="text-red-600">Please select a package.</p>
+            )}
             </div>
         
         

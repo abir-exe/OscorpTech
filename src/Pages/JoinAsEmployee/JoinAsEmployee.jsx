@@ -88,6 +88,9 @@ const JoinAsEmployee = () => {
             placeholder="Full Name"
             className="input input-bordered w-full  "
           />
+          {errors.name?.type === "required" && (
+              <p className="text-red-600">Name is required</p>
+            )}
         </div>
         {/* email  */}
         <div className="form-control  my-6">
@@ -100,6 +103,9 @@ const JoinAsEmployee = () => {
             placeholder="Email"
             className="input input-bordered w-full  "
           />
+          {errors.email?.type === "required" && (
+              <p className="text-red-600">Email is required</p>
+            )}
         </div>
         {/* Photo URL  */}
         <div className="form-control  my-6">
@@ -112,6 +118,9 @@ const JoinAsEmployee = () => {
             placeholder="Photo URL"
             className="input input-bordered w-full  "
           />
+          {errors.photoURL?.type === "required" && (
+              <p className="text-red-600">Photo URL is required</p>
+            )}
         </div>
 
         <div className="flex gap-6">
@@ -157,9 +166,11 @@ const JoinAsEmployee = () => {
               placeholder="Birth Date"
               className="input input-bordered w-full  "
             />
+            {errors.birthDate?.type === "required" && (
+              <p className="text-red-600">Please enter birth date</p>
+            )}
           </div>
         </div>
-
         <button className="btn btn-outline w-1/4">Sign Up</button>
       </form>
       <div

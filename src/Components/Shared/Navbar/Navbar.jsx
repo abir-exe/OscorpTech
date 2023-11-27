@@ -15,7 +15,30 @@ const Navbar = () => {
   };
 
     const navOptions = (
-        <>
+        <div className="flex list-none gap-10 font-bold text-sm mr-10">
+          {
+            user ? <>
+            <li>
+            <Link to="/">Home</Link>
+          </li>
+            <li>
+            <Link to="/myAssets">My Assets</Link>
+          </li>
+            <li>
+            <Link to="/myTeam">My Team</Link>
+          </li>
+            <li>
+            <Link to="/requestForAnAsset">Request For an Asset</Link>
+          </li>
+            <li>
+            <Link to="/makeACustomRequest">Make a custom request</Link>
+          </li>
+            <li>
+            <Link to="/profile">Profile</Link>
+          </li>
+            </>
+             : 
+            <>
           <li>
             <Link to="/">Home</Link>
           </li>
@@ -25,7 +48,9 @@ const Navbar = () => {
           <li>
             <Link to="/joinAsAdmin">Join As Admin</Link>
           </li>
-        </>
+          </>
+          }
+        </div>
       );
     const navDropOptions = (
         <ul
@@ -62,11 +87,15 @@ const Navbar = () => {
     <div>
       <div className="navbar bg-base-100">
         <div className="flex-1">
-         
+         {
+          user ? <img className="w-16 rounded-full" src={user.photoURL} alt="" /> 
+          :
           <img className="w-16 rounded-full" src="https://i.ibb.co/LN5pHHN/logo.png" alt="" />
+         }
+          
         </div>
         <div className="flex-none gap-2">
-          <div className="flex list-none gap-10 font-bold text-sm mr-10">
+          <div className="">
             {navOptions}
           </div>
           <div className="dropdown dropdown-end">

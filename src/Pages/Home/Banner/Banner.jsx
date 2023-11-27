@@ -1,5 +1,6 @@
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
   return (
@@ -11,8 +12,8 @@ const Banner = () => {
         />
         <div className="hero-content border-y-2">
           <div className="space-y-4 text-start mr-60">
-            <h1 className="text-5xl font-bold">Want to grow your business?</h1>
-            <button className="btn btn-primary">Join As Admin</button>
+            <h1 className="text-5xl font-bold mb-2">Want to grow your business?</h1>
+            <Link to="/joinAsAdmin"><button className="btn btn-primary">Join As Admin</button></Link>
           </div>
         </div>
       </div>
@@ -23,8 +24,8 @@ const Banner = () => {
         />
         <div className="hero-content  border-y-2">
           <div className="space-y-4 text-start mr-60">
-            <h1 className="text-5xl font-bold">If You Are A Hard Worker, Join Us</h1>
-            <button className="btn btn-primary">Join As Employee</button>
+            <h1 className="text-5xl font-bold mb-2">If You Are A Hard Worker, Join Us</h1>
+            <Link to="/joinAsEmployee"><button className="btn btn-primary">Join As Employee</button></Link>
           </div>
         </div>
       </div>

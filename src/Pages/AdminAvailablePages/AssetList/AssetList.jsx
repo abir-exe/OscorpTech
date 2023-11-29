@@ -1,6 +1,20 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
 
+import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+
 const AssetList = () => {
+
+  const axiosSecure = useAxiosSecure();
+  
+  const { data: assets = [] } = useQuery({
+    queryKey: ["users"],
+    queryFn: async () => {
+      const res = await axiosSecure.get("/assets");
+      return res.data;
+    },
+  });
+
   return (
     <div>
       <h2 className="text-5xl text-center mb-10 border-x-2 py-5 font-bold uppercase">
@@ -32,74 +46,38 @@ const AssetList = () => {
         </div>
       </div>
       {/* list  */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-10">
-        {/* card */}
-      <div className="card mb-6 bg-base-100 shadow-xl">
-  <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
-  <div className="card-body">
-    <h2 className="card-title">Shoes!</h2>
-    <p>If a dog chews shoes whose shoes does he choose?</p>
-    <div className="card-actions justify-end">
-      <button className="btn btn-primary">Buy Now</button>
-    </div>
-  </div>
+      <div className="overflow-x-auto">
+  <table className="table table-zebra">
+    {/* head */}
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Product Name</th>
+        <th>Product Type</th>
+        <th>Product Quantity</th>
+        <th>Date Added</th>
+        <th>Update</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        assets.map((asset, index) => <tr key={asset._id}>
+        <th>{index + 1}</th>
+        <td>{asset.assetName}</td>
+        <td>{asset.assetType}</td>
+        <td>{asset.quantity}</td>
+        <td>{asset.dateAdded}</td>
+        <td><button className="btn btn-sm btn-outline">Update</button></td>
+        <td><button className="btn btn-sm btn-outline">Delete</button></td>
+      </tr>)
+      }
+      
+      
+    </tbody>
+  </table>
 </div>
-        {/* card */}
-      <div className="card mb-6 bg-base-100 shadow-xl">
-  <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
-  <div className="card-body">
-    <h2 className="card-title">Shoes!</h2>
-    <p>If a dog chews shoes whose shoes does he choose?</p>
-    <div className="card-actions justify-end">
-      <button className="btn btn-primary">Buy Now</button>
-    </div>
-  </div>
-</div>
-        {/* card */}
-      <div className="card mb-6 bg-base-100 shadow-xl">
-  <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
-  <div className="card-body">
-    <h2 className="card-title">Shoes!</h2>
-    <p>If a dog chews shoes whose shoes does he choose?</p>
-    <div className="card-actions justify-end">
-      <button className="btn btn-primary">Buy Now</button>
-    </div>
-  </div>
-</div>
-        {/* card */}
-      <div className="card mb-6 bg-base-100 shadow-xl">
-  <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
-  <div className="card-body">
-    <h2 className="card-title">Shoes!</h2>
-    <p>If a dog chews shoes whose shoes does he choose?</p>
-    <div className="card-actions justify-end">
-      <button className="btn btn-primary">Buy Now</button>
-    </div>
-  </div>
-</div>
-        {/* card */}
-      <div className="card mb-6 bg-base-100 shadow-xl">
-  <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
-  <div className="card-body">
-    <h2 className="card-title">Shoes!</h2>
-    <p>If a dog chews shoes whose shoes does he choose?</p>
-    <div className="card-actions justify-end">
-      <button className="btn btn-primary">Buy Now</button>
-    </div>
-  </div>
-</div>
-        {/* card */}
-      <div className="card mb-6 bg-base-100 shadow-xl">
-  <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
-  <div className="card-body">
-    <h2 className="card-title">Shoes!</h2>
-    <p>If a dog chews shoes whose shoes does he choose?</p>
-    <div className="card-actions justify-end">
-      <button className="btn btn-primary">Buy Now</button>
-    </div>
-  </div>
-</div>
-      </div>
+  
     </div>
   );
 };

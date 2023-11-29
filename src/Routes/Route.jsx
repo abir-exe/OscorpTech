@@ -46,8 +46,8 @@ const router = createBrowserRouter([
         },
         {
           path: '/myTeam',
-          element: <MyTeam></MyTeam>,
-          loader:() => fetch('http://localhost:5000/users')
+          element: <MyTeam></MyTeam>
+         
         },
         {
           path: '/requestForAnAsset',

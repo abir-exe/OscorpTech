@@ -18,7 +18,7 @@ const SignUp = () => {
     e.preventDefault();
     const form = e.target;
     const name = form.name.value;
-    const image = form.image.value;
+    const image = form.photoURL.value;
     const email = form.email.value;
     const password = form.password.value;
     console.log(email, password);
@@ -31,6 +31,7 @@ const SignUp = () => {
         const userInfo = {
           name,
           email,
+          image,
         };
         axiosPublic.post("/users", userInfo).then((res) => {
           if (res.data.insertedId) {
@@ -56,7 +57,8 @@ const SignUp = () => {
       navigate(from, { replace: true });
       const userInfo = {
           name: result.user?.displayName,
-          email: result.user?.email
+          email: result.user?.email,
+          image: result.user?.photoURL
       }
       axiosPublic.post('/users', userInfo)
       .then(res => {
@@ -91,7 +93,7 @@ const SignUp = () => {
               type="text"
               placeholder="Photo URL"
               className="input input-bordered"
-              name="image"
+              name="photoURL"
               required
             />
           </div>

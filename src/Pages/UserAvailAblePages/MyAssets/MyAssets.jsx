@@ -1,4 +1,18 @@
+import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+
+/* eslint-disable react/jsx-no-comment-textnodes */
 const MyAssets = () => {
+  const axiosSecure = useAxiosSecure();
+
+  const { data: assets = [] } = useQuery({
+    queryKey: ["assets"],
+    queryFn: async () => {
+      const res = await axiosSecure.get("/assets");
+      return res.data;
+    },
+  });
+
   return (
     <div className="my-10">
       <div className="items-center text-center mb-5">
@@ -25,40 +39,34 @@ const MyAssets = () => {
           </div>
         </div>
       </div>
+      <h2 className="text-5xl text-center mb-10 border-x-2 py-5 font-bold uppercase">
+        // Asset List
+      </h2>
       {/* table  */}
       <div className="overflow-x-auto">
         <table className="table table-zebra">
           {/* head */}
           <thead>
             <tr>
-              <th></th>
-              <th>Name</th>
-              <th>Job</th>
-              <th>Favorite Color</th>
+              <th>#</th>
+              <th>Asset Name</th>
+              <th>Asset Type</th>
+              <th>Request Date</th>
+              <th>Approval Date</th>
+              <th>Request Status</th>
             </tr>
           </thead>
           <tbody>
-            {/* row 1 */}
-            <tr>
-              <th>1</th>
-              <td>Cy Ganderton</td>
-              <td>Quality Control Specialist</td>
-              <td>Blue</td>
-            </tr>
-            {/* row 2 */}
-            <tr>
-              <th>2</th>
-              <td>Hart Hagerty</td>
-              <td>Desktop Support Technician</td>
-              <td>Purple</td>
-            </tr>
-            {/* row 3 */}
-            <tr>
-              <th>3</th>
-              <td>Brice Swyre</td>
-              <td>Tax Accountant</td>
-              <td>Red</td>
-            </tr>
+            {assets.map((asset, index) => (
+              <tr key={asset._id}>
+                <th>{index + 1}</th>
+                <td>{asset.assetName}</td>
+                <td>{asset.assetType}</td>
+                <td>{asset.requestDate}</td>
+                <td>{asset.approvalDate}</td>
+                <td>{asset.requestStatus}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>

@@ -207,28 +207,22 @@ const MyTeam = () => {
             {/* head */}
             <thead>
               <tr>
-                <th>
-                  <label>
-                    <input type="checkbox" className="checkbox" />
-                  </label>
-                </th>
+                <th>#</th>
+                <th>Image</th>
                 <th>Name</th>
-                <th>Job</th>
-                <th>Favorite Color</th>
-                <th></th>
+                
+                <th>Member Type</th>
+                
               </tr>
             </thead>
             <tbody>
               {
-                users.map(user => <tr key={user._id}>
+                users.map((user, index) => <tr key={user._id}>
                   <th>
-                    <label>
-                      <input type="checkbox" className="checkbox" />
-                    </label>
+                    {index + 1}
                   </th>
-                  <td>
-                    <div className="flex items-center gap-3">
-                      <div className="avatar">
+                  <th>
+                  <div className="avatar">
                         <div className="mask mask-squircle w-12 h-12">
                           <img
                             src={user.image}
@@ -236,19 +230,20 @@ const MyTeam = () => {
                           />
                         </div>
                       </div>
-                      <div>
+                  </th>
+                  <td>
+                    
+                      
+                      
                         <div className="font-bold">{user.name}</div>
-                        <div className="text-sm opacity-50">United States</div>
-                      </div>
-                    </div>
+                        
+                      
+                    
                   </td>
                   <td>
                     member type
                   </td>
-                  <td>Purple</td>
-                  <th>
-                    <button className="btn btn-ghost btn-xs">details</button>
-                  </th>
+                  
                 </tr>)
               }
               

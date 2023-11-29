@@ -1,8 +1,28 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
 
+import { useQuery } from "@tanstack/react-query";
+// import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import useAxiosPublic from "../../../Hooks/useAxiosPublic";
+import { useLoaderData } from "react-router-dom";
+
 const MyTeam = () => {
+
+  const users = useLoaderData();
+  
+
+  // const axiosSecure = useAxiosSecure();
+  // const axiosPublic = useAxiosPublic();
+  // const { data: users = [] } = useQuery({
+  //   queryKey: ["users"],
+  //   queryFn: async () => {
+  //     const res = await axiosPublic.get("/users");
+  //     return res.data;
+  //   },
+  // });
+
   return (
     <div className="space-y-3 my-5">
+      <h2>Total Users: {users.length}</h2>
       <section className="space-y-3">
         <h2 className="text-3xl text-center mb-10 border-x-2 py-5 font-bold uppercase">
           // Upcoming events

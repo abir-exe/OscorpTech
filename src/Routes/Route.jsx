@@ -13,6 +13,7 @@ import Profile from "../Pages/UserAvailAblePages/Profile/Profile";
 import AssetList from "../Pages/AdminAvailablePages/AssetList/AssetList";
 import AddAnAsset from "../Pages/AdminAvailablePages/AddAnAsset/AddAnAsset";
 import AllRequests from "../Pages/AdminAvailablePages/AllRequests/AllRequests";
+import SignUp from "../Pages/SignUp/SignUp";
 
 const router = createBrowserRouter([
     {
@@ -36,12 +37,17 @@ const router = createBrowserRouter([
           element: <Login></Login>
         },
         {
+          path: '/signUp',
+          element: <SignUp></SignUp>
+        },
+        {
           path: '/myAssets',
           element: <MyAssets></MyAssets>
         },
         {
           path: '/myTeam',
-          element: <MyTeam></MyTeam>
+          element: <MyTeam></MyTeam>,
+          loader:() => fetch('http://localhost:5000/users')
         },
         {
           path: '/requestForAnAsset',

@@ -14,6 +14,9 @@ const Navbar = () => {
       .catch((error) => console.log(error));
   };
 
+  //get admin value from database 
+  const isAdmin = true;
+
     const navOptions = (
         <div className="flex list-none gap-10 font-bold text-sm mr-10">
           {
@@ -36,15 +39,18 @@ const Navbar = () => {
             <li>
             <Link to="/profile">Profile</Link>
           </li>
-            <li>
-            <Link to="/admin/assetList">Asset List</Link>
-          </li>
-            <li>
-            <Link to="/admin/addAnAsset">Add An Asset</Link>
-          </li>
-            <li>
-            <Link to="/admin/allRequests">All Requests</Link>
-          </li>
+              {
+                isAdmin ? <> <li>
+                <Link to="/admin/assetList">Asset List</Link>
+              </li>
+                <li>
+                <Link to="/admin/addAnAsset">Add An Asset</Link>
+              </li>
+                <li>
+                <Link to="/admin/allRequests">All Requests</Link>
+              </li></> : <></>
+              }
+           
             </>
              : 
             <>

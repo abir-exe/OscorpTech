@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
 import toast from "react-hot-toast";
+import useAdmin from "../../../Hooks/useAdmin";
 
 const Navbar = () => {
 
@@ -14,8 +15,11 @@ const Navbar = () => {
       .catch((error) => console.log(error));
   };
 
+   
+
+
   //get admin value from database 
-  const isAdmin = true;
+  const isAdmin = useAdmin();
 
     const navOptions = (
         <div className="flex list-none gap-10 font-bold text-sm mr-10">

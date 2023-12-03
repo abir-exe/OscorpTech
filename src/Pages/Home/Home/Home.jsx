@@ -1,3 +1,4 @@
+import useAdmin from "../../../Hooks/useAdmin";
 import useAuth from "../../../Hooks/useAuth";
 import AboutUs from "../AboutUs/AboutUs";
 import Banner from "../Banner/Banner";
@@ -8,16 +9,10 @@ import MyMonthlyRequests from "../UserAvailAbleHome/myMonthlyRequests/MyMonthlyR
 import MyPendingRequests from "../UserAvailAbleHome/myPendingRequests/myPendingRequests";
 
 const Home = () => {
-  const { user, loading } = useAuth();
+  const { user } = useAuth();
 
-  if (loading) {
-    <>
-      <span className="loading loading-ring loading-xs"></span>
-      <span className="loading loading-ring loading-sm"></span>
-      <span className="loading loading-ring loading-md"></span>
-      <span className="loading loading-ring loading-lg"></span>
-    </>;
-  }
+  const [isAdmin] = useAdmin();
+
 
   return (
     <div>

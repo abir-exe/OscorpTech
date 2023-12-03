@@ -1,4 +1,4 @@
-import useAdmin from "../../../Hooks/useAdmin";
+
 import useAuth from "../../../Hooks/useAuth";
 import AboutUs from "../AboutUs/AboutUs";
 import Banner from "../Banner/Banner";
@@ -11,7 +11,7 @@ import MyPendingRequests from "../UserAvailAbleHome/myPendingRequests/myPendingR
 const Home = () => {
   const { user } = useAuth();
 
-  const [isAdmin] = useAdmin();
+  
 
 
   return (

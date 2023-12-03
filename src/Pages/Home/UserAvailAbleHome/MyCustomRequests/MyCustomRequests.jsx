@@ -1,4 +1,5 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
+import { Link } from "react-router-dom";
 import useCustomRequest from "../../../../Hooks/useCustomRequest";
 
 const MyCustomRequests = () => {
@@ -27,13 +28,13 @@ const MyCustomRequests = () => {
                 </thead>
                 <tbody>
                   {customRequest.map((cr, i) => (
-                    <tr key={cr._id}>
+                    <tr key={cr._id} custom={cr}>
                       <th>{i + 1}</th>
                       <td>{cr.assetName}</td>
                       <td>{cr.price}</td>
                       <td>{cr.type}</td>
                       <td>Pending</td>
-                      <td><button className="btn btn-sm btn-outline">Details</button></td>
+                      <td><Link to={`/viewDetails/${cr._id}`}><button  className="btn btn-sm btn-outline">Details</button></Link></td>
                     </tr>
                   ))}
                 </tbody>

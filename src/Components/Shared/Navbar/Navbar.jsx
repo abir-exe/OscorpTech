@@ -3,10 +3,8 @@ import useAuth from "../../../Hooks/useAuth";
 import toast from "react-hot-toast";
 import useAdmin from "../../../Hooks/useAdmin";
 
-
 const Navbar = () => {
   const { user, logOut } = useAuth();
-  
 
   const handleLogOut = () => {
     logOut()
@@ -19,25 +17,68 @@ const Navbar = () => {
   //get admin value from database
   const [isAdmin] = useAdmin();
 
-  const navOptions = (
-    user && isAdmin ? <div className="flex list-none gap-10 font-bold text-sm mr-10">
-           <li>
-             <Link to="/">Found Admin</Link>
-           </li>
-           
-         </div>
-    : user ? <div className="flex list-none gap-10 font-bold text-sm mr-10">
-    <li>
-      <Link to="/">Found Employee</Link>
-    </li>
-    
-  </div> : <div className="flex list-none gap-10 font-bold text-sm mr-10">
-    <li>
-      <Link to="/">No one is here</Link>
-    </li>
-    
-  </div>
-  )
+  const navOptions =
+    user && isAdmin ? (
+      <div className="flex flex-col lg:flex-row list-none gap-5 font-bold text-sm mr-5">
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/admin/assetList">Asset List</Link>
+        </li>
+        <li>
+          <Link to="/admin/addAnAsset">Add An Asset</Link>
+        </li>
+        <li>
+          <Link to="/admin/allRequests">All Requests</Link>
+        </li>
+        <li>
+          <Link to="/joinAsAdmin">Custom Requests List</Link>
+        </li>
+        <li>
+          <Link to="/joinAsAdmin">My Employee List</Link>
+        </li>
+        <li>
+          <Link to="/joinAsAdmin">Add an Employee</Link>
+        </li>
+        <li>
+          <Link to="/joinAsAdmin">Profile</Link>
+        </li>
+      </div>
+    ) : user ? (
+      <div className="flex list-none gap-10 font-bold text-sm mr-10">
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/myAssets">My Assets</Link>
+        </li>
+        <li>
+          <Link to="/myTeam">My Team</Link>
+        </li>
+        <li>
+          <Link to="/requestForAnAsset">Request For an Asset</Link>
+        </li>
+        <li>
+          <Link to="/makeACustomRequest">Make a custom request</Link>
+        </li>
+        <li>
+          <Link to="/profile">Profile</Link>
+        </li>
+      </div>
+    ) : (
+      <div className="flex list-none gap-5 font-bold text-sm mr-5">
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/joinAsEmployee">Join As Employee</Link>
+        </li>
+        <li>
+          <Link to="/joinAsAdmin">Join As Admin</Link>
+        </li>
+      </div>
+    );
 
   // if (user && isAdmin) {
   //   const navOptions = (
@@ -81,7 +122,7 @@ const Navbar = () => {
   // }
   // else{
   //   const navOptions = (<div className="flex list-none gap-10 font-bold text-sm mr-10">
-    
+
   //       <li>
   //         <Link to="/">Home</Link>
   //       </li>
@@ -91,8 +132,7 @@ const Navbar = () => {
   //       <li>
   //         <Link to="/joinAsAdmin">Join As Admin</Link>
   //       </li>
-     
-    
+
   // </div>)
   // }
 

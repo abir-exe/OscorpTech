@@ -1,14 +1,46 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
+import useAxiosPublic from "../../../Hooks/useAxiosPublic";
+import useAuth from "../../../Hooks/useAuth";
 
 const MakeACustomRequest = () => {
+
+  const axiosPublic = useAxiosPublic();
+  const {user} = useAuth();
+
   const {
     register,
     handleSubmit,
-
+    reset,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = async (data) => {
+    console.log(data)
+    
+      //create user entry in database
+      const requestInfo = {
+        email: user.email,
+        assetName: data.assetName,
+        price: data.price,
+        type: data.type,
+        image: data.image,
+        whyYouNeedThis: data.reason,
+        additionalInfo: data.additional
+
+      };
+     
+      const infoRes = await axiosPublic.post('/customRequests', requestInfo);
+      console.log(infoRes.data)
+      if(infoRes.data.insertedId){
+        //show a success popup
+        reset();
+        toast(`${data.assetName} is Requested For Confirmation`, {
+          icon: '👏',
+        });
+      }
+          
+  };
 
   return (
     <div>

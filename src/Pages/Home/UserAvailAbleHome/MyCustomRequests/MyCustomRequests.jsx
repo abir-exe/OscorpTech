@@ -28,7 +28,7 @@ const MyCustomRequests = () => {
                 </thead>
                 <tbody>
                   {customRequest.map((cr, i) => (
-                    <tr key={cr._id} custom={cr}>
+                    <tr key={cr._id}>
                       <th>{i + 1}</th>
                       <td>{cr.assetName}</td>
                       <td>{cr.price}</td>

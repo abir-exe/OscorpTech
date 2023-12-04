@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 import useAuth from "../../../Hooks/useAuth";
+import RequestRow from "./RequestRow";
 
 const RequestForAnAsset = () => {
   const axiosSecure = useAxiosSecure();
@@ -19,15 +20,7 @@ const RequestForAnAsset = () => {
   const {user} = useAuth();
   console.log(user)
 
-  const handleSubmitRequest = (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const Info = form.additionalInfo.value;
-    const currentDate = new Date();
-    const formattedDate = currentDate.toISOString().split('T')[0];
-    
-    console.log(Info, formattedDate)
-  }
+  
 
 
   return (
@@ -74,28 +67,7 @@ const RequestForAnAsset = () => {
           </thead>
           <tbody>
             {assets.map((asset, index) => (
-              <tr key={asset._id}>
-                <th>{index + 1}</th>
-                <td>{asset.assetName}</td>
-                <td>{asset.assetType}</td>
-                <td>{asset.availability}</td>
-                <td>
-                  {asset.availability === "Out of Stock" ? (
-                    <button className="btn btn-sm btn-outline btn-disabled">
-                      Request
-                    </button>
-                  ) : (
-                    <button
-                      className="btn btn-sm btn-outline"
-                      onClick={() =>
-                        document.getElementById("my_modal_3").showModal()
-                      }
-                    >
-                      Request
-                    </button>
-                  )}
-                </td>
-              </tr>
+              <RequestRow key={asset._id} asset={asset}></RequestRow>
             ))}
           </tbody>
         </table>
@@ -103,22 +75,9 @@ const RequestForAnAsset = () => {
       {/* modal  */}
       {/* You can open the modal using document.getElementById('ID').showModal() method */}
 
-<dialog id="my_modal_3" className="modal">
-  <div className="modal-box">
-    <form method="dialog">
-      {/* if there is a button in form, it will close the modal */}
-      <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-    </form>
-    <h3 className="font-bold text-lg">Confirming Your Request!</h3>
-    <form onSubmit={handleSubmitRequest}>
-    <textarea className="textarea textarea-success mt-5 w-full" name="additionalInfo" placeholder="Please add additional informations" type="text" />
-            <br />
-            <input method="dialog" className=" btn btn-outline justify-center mt-14" type="submit" value="Request" />
-    </form>
-  </div>
-</dialog>
 
-      <h3 className="font-bold text-lg"></h3>
+
+      
 
       
     </div>

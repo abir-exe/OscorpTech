@@ -15,6 +15,7 @@ import AddAnAsset from "../Pages/AdminAvailablePages/AddAnAsset/AddAnAsset";
 import AllRequests from "../Pages/AdminAvailablePages/AllRequests/AllRequests";
 import SignUp from "../Pages/SignUp/SignUp";
 import ViewDetails from "../Pages/Home/UserAvailAbleHome/MyCustomRequests/ViewDetails";
+import CustomRequestsList from "../Pages/AdminAvailablePages/CustomRequestsList/CustomRequestsList";
 
 const router = createBrowserRouter([
     {
@@ -77,6 +78,10 @@ const router = createBrowserRouter([
         {
           path: '/admin/allRequests',
           element: <AllRequests></AllRequests>
+        },
+        {
+          path: '/admin/customRequestsList',
+          element: <CustomRequestsList></CustomRequestsList>
         }
         
       ]

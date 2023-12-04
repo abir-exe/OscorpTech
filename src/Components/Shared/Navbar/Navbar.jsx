@@ -33,7 +33,7 @@ const Navbar = () => {
           <Link to="/admin/allRequests">All Requests</Link>
         </li>
         <li>
-          <Link to="/joinAsAdmin">Custom Requests List</Link>
+          <Link to="/admin/customRequestsList">Custom Requests List</Link>
         </li>
         <li>
           <Link to="/joinAsAdmin">My Employee List</Link>

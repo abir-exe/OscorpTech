@@ -2,6 +2,7 @@
 
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
 
 
 
@@ -26,6 +27,10 @@ const MyTeam = () => {
 
   return (
     <div className="space-y-3 my-5">
+      <Helmet>
+        <title>Oscorp Tech | My Team</title>
+        
+      </Helmet>
       <h2>Total Users: {users.length}</h2>
       <section className="space-y-3">
         <h2 className="text-3xl text-center mb-10 border-x-2 py-5 font-bold uppercase">

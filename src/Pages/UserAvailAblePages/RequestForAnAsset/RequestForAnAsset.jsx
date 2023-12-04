@@ -5,6 +5,7 @@ import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 import useAuth from "../../../Hooks/useAuth";
 import RequestRow from "./RequestRow";
+import { Helmet } from "react-helmet-async";
 
 const RequestForAnAsset = () => {
   const axiosSecure = useAxiosSecure();
@@ -25,6 +26,10 @@ const RequestForAnAsset = () => {
 
   return (
     <div className="my-10">
+      <Helmet>
+        <title>Oscorp Tech | Request For An Asset</title>
+        
+      </Helmet>
       <div className="items-center text-center mb-5">
         <div className="join ">
           <div>
@@ -66,7 +71,7 @@ const RequestForAnAsset = () => {
             </tr>
           </thead>
           <tbody>
-            {assets.map((asset, index) => (
+            {assets.map((asset) => (
               <RequestRow key={asset._id} asset={asset}></RequestRow>
             ))}
           </tbody>

@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
 
+import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 
 
@@ -15,6 +16,10 @@ const AddAnAsset = () => {
 
     return (
         <div>
+          <Helmet>
+        <title>Oscorp Tech | Add An Asset</title>
+        
+      </Helmet>
             <h2 className="text-5xl text-center mb-10 border-x-2 py-5 font-bold uppercase">
         // Add An Asset
       </h2>

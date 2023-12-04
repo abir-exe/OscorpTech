@@ -16,7 +16,6 @@ const Navbar = () => {
 
   //get admin value from database
   const [isAdmin] = useAdmin();
-
   const navOptions =
     user && isAdmin ? (
       <div className="flex flex-col lg:flex-row list-none gap-5 font-bold text-sm mr-5">
@@ -36,13 +35,13 @@ const Navbar = () => {
           <Link to="/admin/customRequestsList">Custom Requests List</Link>
         </li>
         <li>
-          <Link to="/joinAsAdmin">My Employee List</Link>
+          <Link to='/admin/myEmployeeList'>My Employee List</Link>
         </li>
         <li>
-          <Link to="/joinAsAdmin">Add an Employee</Link>
+          <Link to="/admin/addAnEmployee">Add an Employee</Link>
         </li>
         <li>
-          <Link to="/joinAsAdmin">Profile</Link>
+          <Link to="/profile">Profile</Link>
         </li>
       </div>
     ) : user ? (
@@ -167,7 +166,7 @@ const Navbar = () => {
       <div className="navbar bg-base-100">
         <div className="flex-1">
           {user ? (
-            <img className="w-16 rounded-full" src={user.photoURL} alt="" />
+            <img className="w-16 rounded-full" src="https://i.ibb.co/LN5pHHN/logo.png" alt="" />
           ) : (
             <img
               className="w-16 rounded-full"

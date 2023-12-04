@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 
 import toast from "react-hot-toast";
-import { Navigate } from "react-router-dom";
+
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import useAuth from "../../../Hooks/useAuth";
 

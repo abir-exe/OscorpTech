@@ -3,8 +3,11 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 const JoinAsAdmin = () => {
+  const axiosPublic = useAxiosPublic();
   const { createUser, updateUserProfile } = useAuth();
 
   const navigate = useNavigate();
@@ -24,20 +27,27 @@ const JoinAsAdmin = () => {
       updateUserProfile(data.name, data.companyLogo)
       .then(() => {
         //create user entry in database
-        // const userInfo = {
-        //   name: data.name,
-        //   email: data.email,
-        // };
-        // axiosPublic.post("/users", userInfo).then((res) => {
-        //   if (res.data.insertedId) {
-        //     console.log("user added to the database");
+        const userInfo = {
+          name: data.name,
+          email: data.email,
+          role: "admin",
+          companyName: data.companyName,
+          companyLogo: data.companyLogo,
+          birthDate: data.birthDate,
+          package: data.package,
+
+
+        };
+        axiosPublic.post("/users", userInfo).then((res) => {
+          if (res.data.insertedId) {
+            console.log("user added to the database");
             reset();
             toast("Sign In As Admin Successful!", {
               icon: "👏",
             });
             navigate("/");
-        //   }
-        // });
+          }
+        });
       })
       .catch((error) => {
         console.log(error)
@@ -52,6 +62,10 @@ const JoinAsAdmin = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Oscorp Tech | Join As Admin</title>
+        
+      </Helmet>
         <h2 className="text-5xl text-center mb-10 border-x-2 py-5 font-bold uppercase">// join as Admin</h2>
       {/* form  */}
       <form className="border px-20 py-10 mx-60 my-10" onSubmit={handleSubmit(onSubmit)}>

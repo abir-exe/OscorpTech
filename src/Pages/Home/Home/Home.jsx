@@ -1,4 +1,5 @@
 
+import { Helmet } from "react-helmet-async";
 import useAdmin from "../../../Hooks/useAdmin";
 import useAuth from "../../../Hooks/useAuth";
 import AboutUs from "../AboutUs/AboutUs";
@@ -23,6 +24,10 @@ const Home = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Oscorp Tech | Home</title>
+        
+      </Helmet>
       {
         isAdmin ?
         <div className="space-y-3 md:space-y-10">

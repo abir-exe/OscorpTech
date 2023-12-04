@@ -2,6 +2,7 @@
 
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
 
 const CustomRequestsList = () => {
 
@@ -17,6 +18,10 @@ const CustomRequestsList = () => {
 
   return (
     <div>
+        <Helmet>
+        <title>Oscorp Tech | Custom Requests List</title>
+        
+      </Helmet>
       <h2 className="text-5xl text-center my-10 border-x-2 py-5 font-bold uppercase">
         // Custom Requests List
       </h2>

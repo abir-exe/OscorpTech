@@ -4,9 +4,11 @@ import toast from "react-hot-toast";
 import useAuth from "../../Hooks/useAuth";
 import { useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
+import { Helmet } from "react-helmet-async";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 const JoinAsEmployee = () => {
-  // const axiosPublic = useAxiosPublic();
+  const axiosPublic = useAxiosPublic();
   const { createUser, updateUserProfile, googleSignIn } = useAuth();
 
   const navigate = useNavigate();
@@ -24,21 +26,25 @@ const JoinAsEmployee = () => {
       console.log(loggedUser);
       updateUserProfile(data.name, data.photoURL)
         .then(() => {
-          //create user entry in database
-          // const userInfo = {
-          //   name: data.name,
-          //   email: data.email,
-          // };
-          // axiosPublic.post("/users", userInfo).then((res) => {
-          //   if (res.data.insertedId) {
-          //     console.log("user added to the database");
+          // create user entry in database
+          const userInfo = {
+            name: data.name,
+            email: data.email,
+            companyPhoto: data.photoURL,
+            birthDate: data.birthDate,
+            role: "employee"
+
+          };
+          axiosPublic.post("/users", userInfo).then((res) => {
+            if (res.data.insertedId) {
+              console.log("user added to the database");
               reset();
               toast("Sign In Successful!", {
                 icon: "👏",
               });
               navigate("/");
-          //   }
-          // });
+            }
+          });
         })
         .catch((error) => console.log(error));
     });
@@ -54,20 +60,24 @@ const JoinAsEmployee = () => {
       console.log(result.user);
       toast.success("Successfully Signed in!");
       navigate(from, { replace: true });
-      // const userInfo = {
-      //     email: result.user?.email,
-      //     name: result.user?.displayName
-      // }
-      // axiosPublic.post('/users', userInfo)
-      // .then(res => {
-      //     console.log(res.data);
-      //     navigate('/');
-      // })
+      const userInfo = {
+          email: result.user?.email,
+          name: result.user?.displayName
+      }
+      axiosPublic.post('/users', userInfo)
+      .then(res => {
+          console.log(res.data);
+          navigate('/');
+      })
     });
   };
 
   return (
     <div>
+      <Helmet>
+        <title>Oscorp Tech | Join As Employee</title>
+        
+      </Helmet>
       <h2 className="text-5xl text-center mb-10 border-x-2 py-5 font-bold uppercase">
         // join as employee
       </h2>

@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
 
 /* eslint-disable react/jsx-no-comment-textnodes */
 const MyAssets = () => {
@@ -15,6 +16,10 @@ const MyAssets = () => {
 
   return (
     <div className="my-10">
+      <Helmet>
+        <title>Oscorp Tech | My Assets</title>
+        
+      </Helmet>
       <div className="items-center text-center mb-5">
         <div className="join ">
           <div>

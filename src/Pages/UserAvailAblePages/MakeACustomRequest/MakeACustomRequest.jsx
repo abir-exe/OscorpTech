@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import useAuth from "../../../Hooks/useAuth";
+import { Helmet } from "react-helmet-async";
 
 const MakeACustomRequest = () => {
 
@@ -44,6 +45,10 @@ const MakeACustomRequest = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Oscorp Tech | Make a custom Request</title>
+        
+      </Helmet>
       <h2 className="text-5xl text-center mb-10 border-x-2 py-5 font-bold uppercase">
         // Make a Custom Request
       </h2>

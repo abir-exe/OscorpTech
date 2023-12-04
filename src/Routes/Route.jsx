@@ -64,6 +64,7 @@ const router = createBrowserRouter([
         {
           path: '/viewDetails/:id',
           element: <ViewDetails></ViewDetails>,
+          loader: () => fetch(`http://localhost:5000/customRequests`)
         },
         {
           path: '/profile',

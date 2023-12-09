@@ -64,7 +64,7 @@ const router = createBrowserRouter([
         {
           path: '/viewDetails/:id',
           element: <ViewDetails></ViewDetails>,
-          loader: () => fetch(`http://localhost:5000/customRequests`)
+          loader: () => fetch(`https://oscorp-tech-asset-management-server.vercel.app/customRequests`)
         },
         {
           path: '/profile',
